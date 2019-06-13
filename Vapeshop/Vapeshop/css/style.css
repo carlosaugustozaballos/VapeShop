@@ -1,0 +1,66 @@
+
+div.oculto{
+    display:none;
+  
+}
+div#loginOculto.oculto{
+    float:right;
+}
+	form {
+    /* Sólo para centrar el formulario a la página */
+    margin: 0 auto;
+    width: 400px;
+    /* Para ver el borde del formulario */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+}
+label {
+    /* Para asegurarse que todos los labels tienen el mismo tamaño y están alineados correctamente */
+    display: inline-block;
+    width: 90px;
+    text-align: right;
+}
+div>a#href{
+    color:rgb(252, 252, 249)    !important;;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: orange;
+    }
+
+    .zoom {
+        padding: 50px;
+        transition: transform .2s; /* Animation */
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+      }
+      
+      .zoom:hover {
+        transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+
+      }
+#precio{
+    position: relative;
+    bottom: 10px;
+    right:10px;
+}
+
+#vCatalogo{
+    position: relative;
+    bottom: 10px;
+   
+}
+
+#vCarrito{
+position: relative;
+bottom: 10px;
+float:right;
+
+
+}
+.botonProductos>a{
+right:15px;
+}
+

@@ -1,0 +1,64 @@
+CREATE TABLE Clientes (id_cli int(4) NOT NULL AUTO_INCREMENT PRIMARY KEY,email TEXT NOT NULL,nick TEXT ,contrasenya TEXT ,nombre TEXT ,telefono INT(13));
+
+CREATE TABLE Pedidos (id_Pedido INT NOT NULL AUTO_INCREMENT PRIMARY KEY,id_cli int(4) NOT NULL,estado VARCHAR (100),FOREIGN KEY (id_cli) REFERENCES clientes(id_cli));
+
+CREATE TABLE Direcciones (id_cli int(4) ,email TEXT  NOT NULL,direccion VARCHAR (50), numero int (10),puerta int (10) ,cp int (6) ,localidad VARCHAR(100));
+
+CREATE TABLE DetallePedido( id_Pedido INT (10) PRIMARY KEY, id_Producto int (4), descripcion VARCHAR(100) , nombre VARCHAR(50), precio FLOAT (5),cantidad INT(2));
+
+CREATE TABLE Productos( id_Producto INT(4) NOT NULL AUTO_INCREMENT PRIMARY KEY,nombre TEXT ,precio TEXT ,imagen TEXT ,stock TEXT ,categoria TEXT ,descripcion TEXT);
+
+
+ALTER TABLE DetallePedido ADD FOREIGN KEY (id_Producto) REFERENCES Productos(id_Producto);
+ALTER TABLE direcciones ADD FOREIGN KEY (id_cli) REFERENCES Clientes (id_cli);
+ALTER TABLE Pedidos ADD FOREIGN KEY (id_Pedido) REFERENCES DetallePedido(id_Pedido);
+
+INSERT INTO Clientes (email, nick, contrasenya,nombre,telefono) VALUES ("admin@gmail.com","admin","admin","admin","123455");
+INSERT INTO Clientes (email, nick, contrasenya,nombre,telefono) VALUES ("usu1@gmail.com","usu1","1234","usu1","12345556");
+INSERT INTO Clientes (email, nick, contrasenya,nombre,telefono) VALUES ("usu@gmail.com","usu","1234","usu","63987626");
+INSERT INTO Clientes (email, nick, contrasenya,nombre,telefono) VALUES ("carlos@gmail.com","carlos","1234","carlos","63987626");
+
+INSERT INTO direcciones (id_cli,email, direccion, numero,puerta,cp,localidad) VALUES ("1","admin@gmail.com","Juan de Garay","1","7","46016","Valencia");
+INSERT INTO direcciones (id_cli,email, direccion, numero,puerta,cp,localidad) VALUES ( "2","usu1@gmail.com","Alquerias de Bellver","12","1","46015","Valencia");
+INSERT INTO direcciones (id_cli,email, direccion, numero,puerta,cp,localidad) VALUES ("3","usu@gmail.com","Guillem","3","5","28001","Madrid");
+INSERT INTO direcciones (id_cli,email, direccion, numero,puerta,cp,localidad) VALUES ("4","carlos@gmail.com","Quartell","7","10","46015","Valencia");
+
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("ZEUS",25.95,"https://http2.mlstatic.com/geek-vape-zeus-rta-tanque-electronico-D_NQ_NP_788887-MLM27853957685_072018-F.jpg",10,"RTA","Zeus es un RTA a prueba de fugas diseñado por Justin, Geekvape GM.
+Diseñado para acomodar a todos los amantes de RTA, desde principiantes hasta veteranos, Zeus fue creado para ser fácil de usar a la vez que ofrece
+sabor con flujo de aire 3D y elimina problemas de fuga mediante la implementación de un mejor flujo de aire superior.
+La tapa superior Zeus ha incorporado el diseño de acceso rápido para facilitar el acceso a la recarga.
+El mejor flujo de aire superior elimina las fugas al tiempo que proporciona una entrada más suave.
+Sistema de recarga simplificado para un acceso rápido.
+El flujo de aire 3D desde ambos lados e inferior produce un sabor sobresaliente.
+Se incluyen dos puntas de goteo 510 y 810");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("DRUGA",29.95,"https://images-na.ssl-images-amazon.com/images/I/411ro%2BqVoqL._SX425_.jpg",10,"RDA","Atomizador regenerador Druga de Augvape, un dripper espectacular, líder en el mercado frente a sus competidores por su relación calidad-precio absolutamente incomparable.Druga es un RDA que facilita las operaciones de regeneración gracias al utilizo del CSS (Clamp Snag System), un sistema de sujeción de abrazaderas que hará que la instalación de tus resistencias sea un juego de niños; tendrás la percepción de que montar una bobina nunca había sido tan fácil - Las grandes torretas Hydroscud permiten un montaje preciso de hilos de gran diámetro y se pueden tensar con las manos.Druga RDA está fabricado con materiales de alta calidad, cada pieza está curada hasta el mínimo detalle, especialmente la cubierta, que es realmente amplia y espaciosa, bañada en oro y te permite la inserción de una bobina de cualquier material.El gotero Druga tiene un diámetro de 24 mm, un drip tip muy largo de 810 (incluyendo un adaptador de 510), un pin 510 bañado en oro y un pin Bottom Feeder incluido en el kit también para ser utilizado con las cajas de Squonk Bottom Feeder.No hay mucho más que decir sobre este fantástico atomizador: bonito estéticamente, funcional, aireado gracias a las aperturas laterales (estilo Goon) y además asegura una excelente rendimiento aromático.El dripper que gusta a todos, principiantes y expertos.Un atomizador regenerador para probar; es necesario que lo tengas en tu colección de «vapeo».Características:Material: acero inoxidable 304 - Diámetro: 24 mm - Drip Tip 810 - Cubierta chapada en oro de 24 quilates - Clamp Snag System - Con Ultem Drip Tip y Derlin Drip Tip - Con pin chapado en oro y oin de acero inoxidable Squonk Bottom Feeder - El paquete Incluye:1 x Druga RDA + 1 x Pin BF + 1 x Derlin Drip Tip negro + 1 x Juego de anillas de repuesto + 1 x Llave hexagonal.");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("WASP NANO",9.95,"https://cdn.shopify.com/s/files/1/2233/7575/products/Oumier-Wasp-Nano-RDATodos_x700.jpg?v=1521523369",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("DROP",19.95,"https://www.elementvape.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/d/i/digiflavor_drop_24mm_rda_by_the_vapor_chronicles_build_deck_1.jpg",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("ALMOND CARAMEL BLEND TOBACCO",4.95,"https://masquevapor.com/42369-large_default/almond-caramel-blend-tobacco-10ml-pack-alo-flavours.jpg",10,"LIQUIDO");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("Nudge RDA ",4.95,"https://morethanvapersshop.es/wp-content/uploads/2019/01/authentic-wotofo-nudge-rda-rebuildable-dripping-atomizer-w-bf-pin-red-aluminum-316-stainless-steel-22mm-diameter-1-600x601.jpg",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("ARMAGEDDON",49.95,"https://morethanvapersshop.es/wp-content/uploads/2018/12/apocalypse-rda-25mm-armageddon-mfg-2.jpg",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("VENUS RDA",27.95,"https://morethanvapersshop.es/wp-content/uploads/2018/03/Captura-de-pantalla-2018-04-13-a-las-19.15.22-300x300.jpg",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("MACE",18.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/1ss-300x300.png",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("LOOP RDA",24.90,"https://morethanvapersshop.es/wp-content/uploads/2018/04/LOOP-300x300.jpg",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("VLS OUMIER",22.90,"https://morethanvapersshop.es/wp-content/uploads/2018/04/oumier-vls-rda-1-3-300x300.jpg",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("TOBINHO",20.90,"https://morethanvapersshop.es/wp-content/uploads/2018/04/Captura-de-pantalla-2018-11-08-a-las-11.35.38-300x300.png",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("DEAD RABBIT",30.90,"https://morethanvapersshop.es/wp-content/uploads/2018/04/drsqss-300x300.jpg",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("DOTTANK",70.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/dotmod-rta-tank-4-500x500-300x300.png",10,"RTA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("MANTA",32.40,"https://morethanvapersshop.es/wp-content/uploads/2018/07/1179879610_w800_h640_silver.800x800-300x300.jpg",10,"RTA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("KYLIN",39.95,"https://morethanvapersshop.es/wp-content/uploads/2018/11/Captura-de-pantalla-2018-11-23-a-las-12.54.51-300x300.jpg",10,"RTA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("BOMBUS",18.90,"https://morethanvapersshop.es/wp-content/uploads/2019/02/BombusBlack-300x300.jpg",10,"RTA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("DOT RDTA",65.90,"https://morethanvapersshop.es/wp-content/uploads/2018/05/dotrdtaultem-300x300.jpg",10,"RDTA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("TAUREN MOD",42.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/b46e08eaf2-300x300.jpg",10,"MOD");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("VGOD PRO MECH",94.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/lifestylepicture_02-copia-1-300x300.jpg",3,"MOD");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("SUB OHM INNOVATIONS",250.90,"https://morethanvapersshop.es/wp-content/uploads/2018/04/soi-brushed-spec-ed-bn-300x300.png",10,"MOD");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("ASMODUS COLOSSAL 80W",51.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/pink-1_large_a403c85b-ff3b-44f1-b62e-df765164023e_large-300x300.jpg",10,"MOD");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("DREAMER MOD MECH NAVAL TIMESVAPES",70.40,"https://morethanvapersshop.es/wp-content/uploads/2018/05/authentic-timesvape-dreamer-hybrid-mechanical-mod-brass-brass-1-x-18650-20700-21700-1-300x300.jpg",10,"MOD");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("K STRAWBERRY",17,"https://morethanvapersshop.es/wp-content/uploads/2018/03/k_2-300x300.jpg",10,"MOD");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("POPDEEZ 50ml",18.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/pop-deez-steep-vapors-300x300.jpg",10,"LIQUIDO");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("BEBECA",15.95,"https://morethanvapersshop.es/wp-content/uploads/2018/03/atmos-lab-bebeca-60ml-300x300.jpg",10,"LIQUIDO");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("BIG MOLLY",22.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/5343-large_default-300x300.jpg",10,"LIQUIDO");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("Jellynut",18.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/jellynut-corona-brother-1-300x300.jpg",10,"LIQUIDO");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("Croissant",22.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/Captura-de-pantalla-2018-04-01-a-las-14.33.15-2-300x300.png",10,"LIQUIDO");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("PACHAMAMA",19.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/pacha-mama-by-charlies-chalk-dust-mango-pitaya-and-pineapple-short-fill_1024x1024-300x300.jpg",10,"LIQUIDO");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("TARIFA",15.40,"https://morethanvapersshop.es/wp-content/uploads/2018/03/Captura-de-pantalla-2018-03-30-a-las-22.05.14-300x300.png",1,"LIQUIDO");
+

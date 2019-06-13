@@ -1,0 +1,57 @@
+CREATE TABLE Clientes (id_cli int(4) NOT NULL AUTO_INCREMENT PRIMARY KEY,email VARCHAR(50) NOT NULL,nick VARCHAR(10),contrasenya VARCHAR(100),nombre VARCHAR(20),telefono INT(13));
+
+CREATE TABLE Pedidos (id_Pedido INT NOT NULL AUTO_INCREMENT PRIMARY KEY,id_cli int(4) NOT NULL,estado VARCHAR (100),FOREIGN KEY (id_cli) REFERENCES clientes(id_cli));
+
+CREATE TABLE Direcciones (id_cli int(4) ,email VARCHAR (50) NOT NULL,direccion VARCHAR (50), numero int (10),puerta int (10) ,cp int (6) ,localidad VARCHAR(100));
+
+CREATE TABLE DetallePedido( id_Pedido INT (10) PRIMARY KEY, id_Producto int (4), descripcion VARCHAR(100) , nombre VARCHAR(50), precio FLOAT (5),cantidad INT(2));
+
+CREATE TABLE Productos( id_Producto INT(4) NOT NULL AUTO_INCREMENT PRIMARY KEY,nombre VARCHAR(50),precio FLOAT(5),imagen VARCHAR(150),stock VARCHAR (2),categoria TEXT,descripcion TEXT);
+
+
+ALTER TABLE DetallePedido ADD FOREIGN KEY (id_Producto) REFERENCES Productos(id_Producto);
+ALTER TABLE direcciones ADD FOREIGN KEY (id_cli) REFERENCES Clientes (id_cli);
+ALTER TABLE Pedidos ADD FOREIGN KEY (id_Pedido) REFERENCES DetallePedido(id_Pedido);
+
+INSERT INTO Clientes (email, nick, contrasenya,nombre,telefono) VALUES ("admin@gmail.com","admin","admin","admin","123455");
+INSERT INTO Clientes (email, nick, contrasenya,nombre,telefono) VALUES ("usu1@gmail.com","usu1","1234","usu1","12345556");
+INSERT INTO Clientes (email, nick, contrasenya,nombre,telefono) VALUES ("usu@gmail.com","usu","1234","usu","63987626");
+INSERT INTO Clientes (email, nick, contrasenya,nombre,telefono) VALUES ("carlos@gmail.com","carlos","1234","carlos","63987626");
+
+INSERT INTO direcciones (id_cli,email, direccion, numero,puerta,cp,localidad) VALUES ("1","admin@gmail.com","Juan de Garay","1","7","46016","Valencia");
+INSERT INTO direcciones (id_cli,email, direccion, numero,puerta,cp,localidad) VALUES ( "2","usu1@gmail.com","Alquerias de Bellver","12","1","46015","Valencia");
+INSERT INTO direcciones (id_cli,email, direccion, numero,puerta,cp,localidad) VALUES ("3","usu@gmail.com","Guillem","3","5","28001","Madrid");
+INSERT INTO direcciones (id_cli,email, direccion, numero,puerta,cp,localidad) VALUES ("4","carlos@gmail.com","Quartell","7","10","46015","Valencia");
+
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("ZEUS",25.95,"https://http2.mlstatic.com/geek-vape-zeus-rta-tanque-electronico-D_NQ_NP_788887-MLM27853957685_072018-F.jpg",10,"RTA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("DRUGA",29.95,"https://images-na.ssl-images-amazon.com/images/I/411ro%2BqVoqL._SX425_.jpg",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("WASP NANO",9.95,"https://cdn.shopify.com/s/files/1/2233/7575/products/Oumier-Wasp-Nano-RDATodos_x700.jpg?v=1521523369",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("DROP",19.95,"https://www.elementvape.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/d/i/digiflavor_drop_24mm_rda_by_the_vapor_chronicles_build_deck_1.jpg",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("ALMOND CARAMEL BLEND TOBACCO",4.95,"https://masquevapor.com/42369-large_default/almond-caramel-blend-tobacco-10ml-pack-alo-flavours.jpg",10,"LIQUIDO");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("Nudge RDA ",4.95,"https://morethanvapersshop.es/wp-content/uploads/2019/01/authentic-wotofo-nudge-rda-rebuildable-dripping-atomizer-w-bf-pin-red-aluminum-316-stainless-steel-22mm-diameter-1-600x601.jpg",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("ARMAGEDDON",49.95,"https://morethanvapersshop.es/wp-content/uploads/2018/12/apocalypse-rda-25mm-armageddon-mfg-2.jpg",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("VENUS RDA",27.95,"https://morethanvapersshop.es/wp-content/uploads/2018/03/Captura-de-pantalla-2018-04-13-a-las-19.15.22-300x300.jpg",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("MACE",18.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/1ss-300x300.png",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("LOOP RDA",24.90,"https://morethanvapersshop.es/wp-content/uploads/2018/04/LOOP-300x300.jpg",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("VLS OUMIER",22.90,"https://morethanvapersshop.es/wp-content/uploads/2018/04/oumier-vls-rda-1-3-300x300.jpg",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("TOBINHO",20.90,"https://morethanvapersshop.es/wp-content/uploads/2018/04/Captura-de-pantalla-2018-11-08-a-las-11.35.38-300x300.png",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("DEAD RABBIT",30.90,"https://morethanvapersshop.es/wp-content/uploads/2018/04/drsqss-300x300.jpg",10,"RDA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("DOTTANK",70.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/dotmod-rta-tank-4-500x500-300x300.png",10,"RTA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("MANTA",32.40,"https://morethanvapersshop.es/wp-content/uploads/2018/07/1179879610_w800_h640_silver.800x800-300x300.jpg",10,"RTA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("KYLIN",39.95,"https://morethanvapersshop.es/wp-content/uploads/2018/11/Captura-de-pantalla-2018-11-23-a-las-12.54.51-300x300.jpg",10,"RTA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("BOMBUS",18.90,"https://morethanvapersshop.es/wp-content/uploads/2019/02/BombusBlack-300x300.jpg",10,"RTA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("DOT RDTA",65.90,"https://morethanvapersshop.es/wp-content/uploads/2018/05/dotrdtaultem-300x300.jpg",10,"RDTA");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("TAUREN MOD",42.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/b46e08eaf2-300x300.jpg",10,"MOD");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("VGOD PRO MECH",94.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/lifestylepicture_02-copia-1-300x300.jpg",3,"MOD");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("SUB OHM INNOVATIONS",250.90,"https://morethanvapersshop.es/wp-content/uploads/2018/04/soi-brushed-spec-ed-bn-300x300.png",10,"MOD");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("ASMODUS COLOSSAL 80W",51.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/pink-1_large_a403c85b-ff3b-44f1-b62e-df765164023e_large-300x300.jpg",10,"MOD");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("DREAMER MOD MECH NAVAL TIMESVAPES",70.40,"https://morethanvapersshop.es/wp-content/uploads/2018/05/authentic-timesvape-dreamer-hybrid-mechanical-mod-brass-brass-1-x-18650-20700-21700-1-300x300.jpg",10,"MOD");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("K STRAWBERRY",17,"https://morethanvapersshop.es/wp-content/uploads/2018/03/k_2-300x300.jpg",10,"MOD");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("POPDEEZ 50ml",18.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/pop-deez-steep-vapors-300x300.jpg",10,"LIQUIDO");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("BEBECA",15.95,"https://morethanvapersshop.es/wp-content/uploads/2018/03/atmos-lab-bebeca-60ml-300x300.jpg",10,"LIQUIDO");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("BIG MOLLY",22.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/5343-large_default-300x300.jpg",10,"LIQUIDO");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("Jellynut",18.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/jellynut-corona-brother-1-300x300.jpg",10,"LIQUIDO");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("Croissant",22.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/Captura-de-pantalla-2018-04-01-a-las-14.33.15-2-300x300.png",10,"LIQUIDO");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("PACHAMAMA",19.90,"https://morethanvapersshop.es/wp-content/uploads/2018/03/pacha-mama-by-charlies-chalk-dust-mango-pitaya-and-pineapple-short-fill_1024x1024-300x300.jpg",10,"LIQUIDO");
+INSERT INTO productos(nombre,precio,imagen,stock,categoria) VALUES ("TARIFA",15.40,"https://morethanvapersshop.es/wp-content/uploads/2018/03/Captura-de-pantalla-2018-03-30-a-las-22.05.14-300x300.png",1,"LIQUIDO");
+
